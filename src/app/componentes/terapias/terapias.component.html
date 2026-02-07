@@ -1,29 +1,43 @@
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-title>Tratamentos</ion-title>
-    </ion-toolbar>
-</ion-header>
+<ion-content>
+    <h2 class="section-title">Minhas Doses Hoje</h2>
+    <div class="header-section">
+        <div class="progress-container">
+            <div class="progress-ring" [style.--progress]="progresso * 360 + 'deg'">
+                <div class="inner-ring">
+                    <span class="doses">{{dosesTomadas}} / {{totalDoses}}</span>
+                    <span class="label">Tomadas</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<ion-content class="ion-padding">
-    <ion-list>
-        <ion-card *ngFor="let tratamento of tratamentos" (click)="abrirDetalhes(tratamento.id)" button="true">
-            <ion-card-header>
-                <ion-card-title>{{ tratamento.medicamento }}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <p><strong>Frequência:</strong> {{ tratamento.frequencia }}</p>
-                    </div>
-                    <div style="display: flex; gap: 10px;">
-                        <ion-icon class="action-icon" name="trash" color="medium"
-                            (click)="excluirTratamento($event, tratamento.id)"></ion-icon>
-                        <ion-icon class="action-icon" name="checkmark-circle"
-                            [color]="tratamento.concluido ? 'success' : 'medium'"
-                            (click)="concluirTratamento($event, tratamento)"></ion-icon>
+    <div class="content-section">
+        <h2 class="section-title">Terapias em andamento</h2>
+
+        <div class="doses-list">
+            <div class="dose-card" *ngFor="let t of tratamentos" [class.completed]="t.concluido"
+                (click)="abrirDetalhes(t.id)">
+                <div class="icon-box">
+                    <ion-icon name="medkit"></ion-icon>
+                </div>
+                <div class="info-box">
+                    <h3>{{t.medicamento}}</h3>
+                    <p class="time">
+                        <ion-icon name="time"></ion-icon>
+                        {{t.frequencia}}
+                    </p>
+                </div>
+                <div class="action-box">
+                    <div class="check-btn" (click)="concluirTratamento($event, t)" [class.checked]="t.concluido">
+                        <ion-icon name="checkmark" *ngIf="t.concluido"></ion-icon>
                     </div>
                 </div>
-            </ion-card-content>
-        </ion-card>
-    </ion-list>
+            </div>
+
+            <div *ngIf="tratamentos.length === 0" class="empty-state ion-text-center ion-padding">
+                <p>Nenhum tratamento cadastrado.</p>
+                <ion-button routerLink="/">Adicionar Medicamento</ion-button>
+            </div>
+        </div>
+    </div>
 </ion-content>

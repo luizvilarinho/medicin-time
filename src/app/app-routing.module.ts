@@ -6,11 +6,11 @@ import { TerapiasComponent } from "./componentes/terapias/terapias.component";
 const routes: Routes = [
   {
     path: '',
-    component: MedicamentoFormComponent
+    component: TerapiasComponent
   },
   {
-    path: 'terapias',
-    component: TerapiasComponent
+    path: 'novo',
+    component: MedicamentoFormComponent
   },
   {
     path: 'tratamento/:id',

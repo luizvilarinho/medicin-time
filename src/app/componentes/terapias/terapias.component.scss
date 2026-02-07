@@ -1,12 +1,220 @@
-ion-content {
-    --background: #f0f0f0;
+// Spacing Variables based on 8px grid
+$spacing-1: 8px;
+$spacing-2: 16px;
+$spacing-3: 24px;
+$spacing-4: 32px;
+$spacing-5: 40px;
+
+ion-header {
+    background: var(--ion-background-color);
+
+    ion-toolbar {
+        --background: transparent;
+        --color: var(--ion-text-color); // Ensure this is dark gray
+        --border-color: transparent;
+        padding-top: $spacing-1;
+        padding-bottom: $spacing-1;
+
+        ion-title {
+            font-size: 24px; // 3x8
+            font-weight: 700;
+            padding-left: $spacing-1;
+            color: var(--ion-text-color); // Explicitly set color to override any defaults
+        }
+    }
 }
 
-ion-title {
-    color: #E3F2FD;
-    /* Very light blue */
+.header-section {
+    display: flex;
+    justify-content: center;
+    padding-top: $spacing-3; // Reduced top padding
+    padding-bottom: $spacing-4; // Reduced bottom padding
+    background: var(--ion-background-color);
 }
 
-.action-icon {
-    font-size: 24px;
+.progress-container {
+    position: relative;
+    width: 140px; // Reduced from 200px
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(var(--ion-color-secondary) var(--progress), #E3E2E0 0deg); // Softer gray background
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+    // Remove shadow for flat look
+    box-shadow: none;
+
+    .inner-ring {
+        width: 124px; // 140 - 16
+        height: 124px;
+        border-radius: 50%;
+        background: var(--ion-background-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .doses {
+            font-size: 32px; // Reduced from 40px
+            font-weight: 700;
+            color: var(--ion-text-color); // Dark gray, not primary
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -1px;
+        }
+
+        .label {
+            font-size: 11px; // Reduced slightly
+            color: #787774; // Gray 500-ish
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+    }
+}
+
+.content-section {
+    background: var(--ion-background-color);
+    min-height: 100%;
+    padding-top: $spacing-2;
+}
+
+.section-title {
+    font-size: 16px; // 2x8
+    font-weight: 600;
+    margin-bottom: $spacing-2;
+    margin-left: $spacing-2;
+    color: #787774; // Section header color (softer)
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Inter', sans-serif;
+}
+
+.doses-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2; // 16px gap
+    padding: 0 $spacing-2; // 16px padding sides
+}
+
+.dose-card {
+    background: #ffffff;
+    border-radius: 8px; // 1x8 radius (more minimal)
+    padding: $spacing-2; // 16px padding
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    // Minimalist Border instead of Shadow
+    border: 1px solid #E3E2E0;
+    box-shadow: none;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #fafafa;
+    }
+
+    &:active {
+        transform: scale(0.99);
+    }
+
+    &.completed {
+        background: #F7F6F3; // Very light gray for completed
+        border-color: transparent;
+
+        .info-box h3 {
+            text-decoration: line-through;
+            color: #9B9A97;
+        }
+
+        .icon-box ion-icon {
+            color: #9B9A97;
+        }
+
+        .action-box .check-btn {
+            background: var(--ion-color-secondary);
+            border-color: var(--ion-color-secondary);
+            color: white;
+        }
+    }
+
+    .icon-box {
+        width: 40px; // 5x8
+        height: 40px;
+        background: transparent; // Clean look
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ion-icon {
+            font-size: 24px;
+            color: var(--ion-text-color);
+        }
+    }
+
+    .info-box {
+        flex: 1;
+
+        h3 {
+            margin: 0 0 4px 0; // 0.5x8
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--ion-text-color);
+        }
+
+        .time {
+            margin: 0;
+            font-size: 13px;
+            color: #787774;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 400;
+
+            ion-icon {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .action-box {
+        .check-btn {
+            width: 24px; // 3x8
+            height: 24px;
+            border-radius: 4px; // Square with rounded corners (Task style)
+            border: 2px solid #D3D1CB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            transition: all 0.2s ease;
+            cursor: pointer;
+
+            &:hover {
+                border-color: var(--ion-color-secondary);
+                background: rgba(var(--ion-color-secondary-rgb), 0.1);
+            }
+        }
+    }
+}
+
+.empty-state {
+    color: #787774;
+    margin-top: $spacing-4;
+
+    p {
+        margin-bottom: $spacing-3;
+    }
 }

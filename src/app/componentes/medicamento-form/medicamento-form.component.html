@@ -6,7 +6,7 @@
     <div class="form-container">
         <form [formGroup]="medicamentoForm" (ngSubmit)="salvarMedicamento()">
             <ion-item>
-                <ion-input label="Nome do Medicamento" label-placement="floating" formControlName="medicamento"
+                <ion-input label="Nome do Medicamento *" label-placement="floating" formControlName="medicamento"
                     type="text" placeholder="Ex: Dipirona"></ion-input>
                 <ion-note slot="error"
                     *ngIf="medicamentoForm.get('medicamento')?.invalid && medicamentoForm.get('medicamento')?.touched">
@@ -16,9 +16,9 @@
 
             <ion-grid>
                 <ion-row>
-                    <ion-col size="6">
+                    <ion-col size="12">
                         <ion-item>
-                            <ion-input label="Quantidade" label-placement="floating" placeholder="Ex: 1"
+                            <ion-input label="Quantidade da dose *" label-placement="floating" placeholder="Ex: 1"
                                 formControlName="quantidade" type="number"></ion-input>
                         </ion-item>
                         <ion-note slot="error"
@@ -27,10 +27,10 @@
                             Quantidade é obrigatória
                         </ion-note>
                     </ion-col>
-                    <ion-col size="6">
+                    <ion-col size="12">
                         <ion-item>
-                            <ion-select label="Tipo" label-placement="floating" formControlName="tipoMedicamento"
-                                interface="popover">
+                            <ion-select label="Tipo de medicamento" label-placement="floating"
+                                formControlName="tipoMedicamento" interface="popover">
                                 <ion-select-option value="comprimido(s)">comprimido(s)</ion-select-option>
                                 <ion-select-option value="gota(s)">gota(s)</ion-select-option>
                             </ion-select>
@@ -40,7 +40,7 @@
             </ion-grid>
 
             <ion-item>
-                <ion-select label="Frequência" label-placement="floating" formControlName="frequencia"
+                <ion-select label="Frequência *" label-placement="floating" formControlName="frequencia"
                     interface="action-sheet">
                     <ion-select-option value="1 vez ao dia">1 vez ao dia</ion-select-option>
                     <ion-select-option value="a cada 12 horas">a cada 12 horas</ion-select-option>
@@ -55,7 +55,7 @@
             </ion-item>
 
             <ion-item>
-                <ion-select label="Duração" label-placement="floating" formControlName="duracao"
+                <ion-select label="Duração do tratamento *" label-placement="floating" formControlName="duracao"
                     interface="action-sheet">
                     <ion-select-option value="1 dia">1 dia</ion-select-option>
                     <ion-select-option value="2 dias">2 dias</ion-select-option>
@@ -80,7 +80,7 @@
 
 
             <ion-item>
-                <ion-label>Início da Terapia</ion-label>
+                <ion-label>Início da Terapia *</ion-label>
                 <ion-datetime-button datetime="inicioTerapia"></ion-datetime-button>
                 <ion-modal [keepContentsMounted]="true">
                     <ng-template>
