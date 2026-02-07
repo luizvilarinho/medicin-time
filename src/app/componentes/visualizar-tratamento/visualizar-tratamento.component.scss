@@ -1,0 +1,28 @@
+.resumo-tratamento {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--ion-color-light);
+    border-radius: 8px;
+
+    h2 {
+        margin-top: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    p {
+        margin-bottom: 0;
+        color: var(--ion-color-medium);
+    }
+}
+
+h3 {
+    margin-left: 10px;
+    margin-top: 20px;
+    color: var(--ion-color-dark);
+}
+
+.tomado {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}

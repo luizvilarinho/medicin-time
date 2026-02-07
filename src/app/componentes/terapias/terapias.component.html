@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Tratamentos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-card *ngFor="let tratamento of tratamentos" (click)="abrirDetalhes(tratamento.id)" button="true">
+            <ion-card-header>
+                <ion-card-title>{{ tratamento.medicamento }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p><strong>Frequência:</strong> {{ tratamento.frequencia }}</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <ion-icon class="action-icon" name="trash" color="medium"
+                            (click)="excluirTratamento($event, tratamento.id)"></ion-icon>
+                        <ion-icon class="action-icon" name="checkmark-circle"
+                            [color]="tratamento.concluido ? 'success' : 'medium'"
+                            (click)="concluirTratamento($event, tratamento)"></ion-icon>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>

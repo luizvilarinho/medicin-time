@@ -1,0 +1,110 @@
+.form-container {}
+
+.form-title {}
+
+.form-subtitle {
+    color: #666;
+    margin-bottom: 24px;
+    font-weight: lighter;
+    font-size: 1.2rem;
+}
+
+ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin-bottom: 16px;
+    --background: transparent;
+    --border-color: #ddd;
+}
+
+ion-label {
+    color: var(--ion-color-primary) !important; // Roxo claro para os labels
+    font-weight: 500;
+}
+
+ion-input,
+ion-select,
+ion-datetime-button {
+    --color: var(--ion-color-secondary-shade);
+    font-size: 16px;
+}
+
+.button-container {
+    margin-top: 40px; // Aumentando o espaçamento do botão em relação ao último input
+}
+
+ion-button {
+    --background: var(--ion-color-primary);
+    --background-activated: var(--ion-color-primary-shade);
+    --background-hover: var(--ion-color-primary-shade);
+    height: 48px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+ion-datetime {
+
+    // Adicione estes estilos para o ion-datetime-button
+    ion-datetime-button {
+        --background: var(--ion-color-light-bg);
+        --color: var(--ion-color-primary);
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 8px;
+        width: 100%;
+        min-height: 44px;
+        display: block;
+    }
+
+    // Ajuste para o modal de datetime
+    ion-modal ion-datetime {
+        --background: var(--ion-color-light-bg);
+        --color: var(--ion-color-primary);
+    }
+
+    --placeholder-color: #999;
+}
+
+ion-note {
+    color: #ff5252;
+    font-size: 12px;
+    padding-top: 4px;
+}
+
+// Adicione este estilo para corrigir o posicionamento do ícone do select
+ion-select {
+    --padding-start: 0;
+    --padding-end: 16px;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+ion-select::part(icon) {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+// Para garantir que o text do select fique correto
+ion-select {
+    width: 100%;
+}
+
+// Ajuste para a cor do texto do select
+ion-select {
+    --color: var(--ion-color-secondary-shade);
+    --placeholder-color: var(--ion-color-secondary-shade);
+}
+
+// Para garantir que o texto selecionado também seja roxo
+ion-select::part(text) {
+    color: var(--ion-color-secondary-shade);
+}
+
+// Para o texto das opções no popover/action sheet
+ion-select-option {
+    color: var(--ion-color-primary);
+}

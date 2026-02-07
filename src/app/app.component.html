@@ -1,0 +1,34 @@
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/" lines="none" detail="false">
+            <ion-label>Novo Tratamento</ion-label>
+          </ion-item>
+          <ion-item routerLink="/terapias" lines="none" detail="false">
+            <ion-label>Tratamentos</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <div id="main-content" class="ion-page">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Medicin Time</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="secondary-contrast">
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </div>
+</ion-app>
