@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/terapias"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Detalhes do Tratamento</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="tratamento">
+
+    <div class="resumo-tratamento">
+        <h2>{{ tratamento.medicamento }}</h2>
+        <p>{{ tratamento.frequencia }} por {{ tratamento.duracaoDias }} dias</p>
+    </div>
+
+    <div *ngFor="let dia of diasTratamento">
+        <h3>{{ dia.titulo }}</h3>
+        <ion-card *ngFor="let dose of dia.doses" [class.tomado]="dose.tomado">
+            <ion-item lines="none">
+                <ion-label>
+                    <h2>{{ tratamento.medicamento }}</h2>
+                    <p>Horário: {{ dose.hora }}</p>
+                </ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="dose.tomado"></ion-checkbox>
+            </ion-item>
+        </ion-card>
+    </div>
+
+</ion-content>
+
+<ion-content class="ion-padding" *ngIf="!tratamento">
+    <p>Tratamento não encontrado.</p>
+</ion-content>

@@ -1,0 +1,106 @@
+<app-card>
+    <div>
+        <h1 class="form-title">Cadastro de medicamentos</h1>
+        <p class="form-subtitle">Preencha os dados do seu tratamento</p>
+    </div>
+    <div class="form-container">
+        <form [formGroup]="medicamentoForm" (ngSubmit)="salvarMedicamento()">
+            <ion-item>
+                <ion-input label="Nome do Medicamento" label-placement="floating" formControlName="medicamento"
+                    type="text" placeholder="Ex: Dipirona"></ion-input>
+                <ion-note slot="error"
+                    *ngIf="medicamentoForm.get('medicamento')?.invalid && medicamentoForm.get('medicamento')?.touched">
+                    Nome do medicamento é obrigatório
+                </ion-note>
+            </ion-item>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-input label="Quantidade" label-placement="floating" placeholder="Ex: 1"
+                                formControlName="quantidade" type="number"></ion-input>
+                        </ion-item>
+                        <ion-note slot="error"
+                            *ngIf="medicamentoForm.get('quantidade')?.invalid && medicamentoForm.get('quantidade')?.touched"
+                            class="ion-padding-start">
+                            Quantidade é obrigatória
+                        </ion-note>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-item>
+                            <ion-select label="Tipo" label-placement="floating" formControlName="tipoMedicamento"
+                                interface="popover">
+                                <ion-select-option value="comprimido(s)">comprimido(s)</ion-select-option>
+                                <ion-select-option value="gota(s)">gota(s)</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+            <ion-item>
+                <ion-select label="Frequência" label-placement="floating" formControlName="frequencia"
+                    interface="action-sheet">
+                    <ion-select-option value="1 vez ao dia">1 vez ao dia</ion-select-option>
+                    <ion-select-option value="a cada 12 horas">a cada 12 horas</ion-select-option>
+                    <ion-select-option value="a cada 8 horas">a cada 8 horas</ion-select-option>
+                    <ion-select-option value="a cada 4 horas">a cada 4 horas</ion-select-option>
+                    <ion-select-option value="a cada 3 horas">a cada 3 horas</ion-select-option>
+                </ion-select>
+                <ion-note slot="error"
+                    *ngIf="medicamentoForm.get('frequencia')?.invalid && medicamentoForm.get('frequencia')?.touched">
+                    Frequência é obrigatória
+                </ion-note>
+            </ion-item>
+
+            <ion-item>
+                <ion-select label="Duração" label-placement="floating" formControlName="duracao"
+                    interface="action-sheet">
+                    <ion-select-option value="1 dia">1 dia</ion-select-option>
+                    <ion-select-option value="2 dias">2 dias</ion-select-option>
+                    <ion-select-option value="3 dias">3 dias</ion-select-option>
+                    <ion-select-option value="4 dias">4 dias</ion-select-option>
+                    <ion-select-option value="5 dias">5 dias</ion-select-option>
+                    <ion-select-option value="6 dias">6 dias</ion-select-option>
+                    <ion-select-option value="1 semana">1 semana</ion-select-option>
+                    <ion-select-option value="2 semanas">2 semanas</ion-select-option>
+                    <ion-select-option value="10 dias">10 dias</ion-select-option>
+                    <ion-select-option value="20 dias">20 dias</ion-select-option>
+                    <ion-select-option value="1 mês">1 mês</ion-select-option>
+                    <ion-select-option value="2 meses">2 meses</ion-select-option>
+                    <ion-select-option value="3 meses">3 meses</ion-select-option>
+                </ion-select>
+                <ion-note slot="error"
+                    *ngIf="medicamentoForm.get('duracao')?.invalid && medicamentoForm.get('duracao')?.touched">
+                    Duração é obrigatória
+                </ion-note>
+            </ion-item>
+
+
+
+            <ion-item>
+                <ion-label>Início da Terapia</ion-label>
+                <ion-datetime-button datetime="inicioTerapia"></ion-datetime-button>
+                <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                        <ion-datetime id="inicioTerapia" formControlName="inicioTerapia" presentation="date-time"
+                            [preferWheel]="true" [showDefaultButtons]="true">
+                        </ion-datetime>
+                    </ng-template>
+                </ion-modal>
+                <ion-note slot="error"
+                    *ngIf="medicamentoForm.get('inicioTerapia')?.invalid && medicamentoForm.get('inicioTerapia')?.touched">
+                    Data e hora de início são obrigatórias
+                </ion-note>
+            </ion-item>
+
+
+            <div class="button-container">
+                <ion-button expand="block" type="submit" [disabled]="medicamentoForm.invalid">
+                    Salvar Medicamento
+                </ion-button>
+            </div>
+        </form>
+    </div>
+</app-card>
